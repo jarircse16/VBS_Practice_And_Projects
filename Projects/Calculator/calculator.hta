@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calculator</title>
+    <hta:application
+        applicationname="Calculator"
+        id="Calculator"
+        singleinstance="yes"
+        sysmenu="yes"
+        navigable="yes"
+    />
+</head>
+<body>
+    <center><h1>Simple Calculator (HTA)</h1>
+
+    <p>Enter the first number:</p>
+    <input type="text" id="num1" /><br />
+
+    <p>Enter the second number:</p>
+    <input type="text" id="num2" /><br /><br />
+
+    <button onclick="calculate('add')">Add</button>
+    <button onclick="calculate('subtract')">Subtract</button>
+    <button onclick="calculate('multiply')">Multiply</button>
+    <button onclick="calculate('divide')">Divide</button>
+
+    <br /><br />
+
+    <p>Result:</p>
+    <div id="result"></div>
+
+    <script language="VBScript" src="vbs/calculator.vbs"></script>
+</body>
+</html>

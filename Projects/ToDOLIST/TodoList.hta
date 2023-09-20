@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Todo List</title>
+    <hta:application
+        applicationname="TodoList"
+        id="TodoList"
+        singleinstance="yes"
+        sysmenu="yes"
+        navigable="yes"
+    />
+    <link rel="stylesheet" type="text/css" href="css\hover.css">
+</head>
+<body>
+    <center><h1>Todo List (HTA)</h1>
+
+    <div>
+        <input type="text" id="taskInput" placeholder="Enter a task" />
+        <button class="my-button" onclick="addTask()">Add</button>
+    </div>
+
+    <ul id="taskList"></ul>
+
+    <script language="VBScript" src="vbs\TodoList.vbs"></script></center>
+</body>
+</html>
