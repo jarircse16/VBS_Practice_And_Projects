@@ -9,7 +9,13 @@
         sysmenu="yes"
         navigable="yes"
     />
+  <style>
+      .invisible-text{
+        display: none;
+      }
+</style>
     <link rel="stylesheet" type="text/css" href="css\hover.css">
+
 </head>
 <body>
     <center><h1>Todo List (HTA)</h1>
@@ -20,7 +26,12 @@
     </div>
 
     <ul id="taskList"></ul>
-
-    <script language="VBScript" src="vbs\TodoList.vbs"></script></center>
+    <div class="invisible-text">
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vel turpis nec tortor blandit bibendum a sit amet quam. Integer tincidunt, dui in dignissim fringilla, ligula leo commodo libero, eget cursus justo ex in libero. Maecenas in dolor vel erat euismod vulputate vel in quam. Etiam nec tristique ligula, eu eleifend justo. Suspendisse viverra urna eget dui venenatis, ut egestas tortor pharetra. Fusce volutpat ex vel quam euismod bibendum. Quisque rhoncus bibendum vehicula. Duis nec <p>efficitur arcu, id aliquam elit. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Sed bibendum dolor sit amet ex vulputate euismod.
+    <p>Suspendisse potenti. Nulla facilisi. Nunc lacinia quam at aliquam efficitur. Vivamus vitae</div>
+    <script language="text/vbscript" src="vbs\prevent_source_stealing.vbs"></script>
+    <script language="VBScript" src="vbs\TodoList.vbs"></script>
+    <script src="js\disable-right-click.js"></script>
+    
 </body>
 </html>
