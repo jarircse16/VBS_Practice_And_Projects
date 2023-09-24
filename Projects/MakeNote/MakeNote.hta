@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MakeNote Editor</title>
+    <hta:application id="editorApp" applicationname="HTA Text Editor" />
+    <script language="javascript" type="text/javascript">
+        var currentFile = "";
+
+        function loadFile(filePath) {
+            var fs = new ActiveXObject("Scripting.FileSystemObject");
+            if (fs.FileExists(filePath)) {
+                var file = fs.OpenTextFile(filePath, 1); // 1 = ForReading
+                var fileContent = file.ReadAll();
+                file.Close();
+                return fileContent;
+            }
+            return "";
+        }
+
+        function saveFile() {
+            if (currentFile) {
+                var content = document.getElementById("editor").value;
+                var fs = new ActiveXObject("Scripting.FileSystemObject");
+                var file = fs.CreateTextFile(currentFile, true); // true = Overwrite if exists
+                file.Write(content);
+                file.Close();
+                alert("File saved successfully.");
+            } else {
+                alert("No file selected. Use 'Create New' or 'Open' to select or create a file.");
+            }
+        }
+
+        function createNewFile() {
+            currentFile = "";
+            var fileName = prompt("Enter a filename (with extension):");
+            if (fileName) {
+                currentFile = fileName;
+                document.getElementById("editor").value = "";
+            }
+        }
+
+        function openFile() {
+            var fileInput = document.getElementById("fileInput");
+            fileInput.click();
+        }
+
+        function handleFileInput() {
+            var fileInput = document.getElementById("fileInput");
+            if (fileInput.files && fileInput.files.length > 0) {
+                var file = fileInput.files[0];
+                currentFile = file.name;
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    document.getElementById("editor").value = e.target.result;
+                };
+                reader.readAsText(file);
+            }
+        }
+
+        function findAndReplace() {
+            var findText = prompt("Find:");
+            var replaceText = prompt("Replace:");
+            var content = document.getElementById("editor").value;
+            var regex = new RegExp(findText, "g");
+            content = content.replace(regex, replaceText);
+            document.getElementById("editor").value = content;
+        }
+    </script>
+    <style>
+    body {
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-image: url('E:/Users/Jarir Ahmed/OneDrive/Documents/VBS_Practice/Projects/MakeNote/images/background.png'); /* Path to your background image */
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        font-family: Arial, sans-serif;
+        height: 100%;
+    }
+    .my-button {
+        background-color: #3498db; /* Default background color */
+        color: #ffffff; /* Default text color */
+        padding: 10px 20px;
+        border: none;
+        cursor: pointer;
+    }
+
+    .my-button:hover {
+        background-color: #2980b9; /* Background color on hover */
+    }
+  /* Transparent input boxes */
+input[type="text"], input[type="password"], input[type="email"] {
+  background-color: transparent;
+  border: 1px solid #ccc; /* Add a border for better visibility */
+  padding: 5px;
+
+}
+
+/* Transparent text areas */
+textarea {
+  background-color: transparent;
+  border: 1px solid #ccc; /* Add a border for better visibility */
+  padding: 5px;
+
+
+}
+  </style>
+</head>
+<body>
+    <textarea id="editor" rows="23" cols="112"></textarea>
+    <br>
+    <center><button class ="my-button" onclick="createNewFile()">Create New</button>
+    <!--<button onclick="openFile()">Open</button>
+    <input type="file" id="fileInput" style="display: none;" onchange="handleFileInput()">-->
+    <button class ="my-button"  onclick="saveFile()">Save</button>
+    <br>
+    Find: <input type="text" id="findText">
+    Replace: <input type="text" id="replaceText">
+    <button class ="my-button"  onclick="findAndReplace()">Find & Replace</button></center>
+</body>
+</html>
